@@ -1,0 +1,54 @@
+REM  *****  BASIC  *****
+
+Sub Main
+
+End Sub
+
+
+REM  *****  BASIC  *****
+REM https://www.briankoponen.com/libreoffice-export-sheets-csv/
+
+Sub CreateParametersPRM
+	Dim pathToScript As String
+	Dim lengthPath As Integer
+    document = ThisComponent
+
+    ' Use the global string tools library to generate a path to save each CSV
+    GlobalScope.BasicLibraries.loadLibrary("Tools")
+    FileDirectory = Tools.Strings.DirectoryNameoutofPath(document.getURL(), "/")
+
+    ' Work out number of sheets for looping over them later.
+    Sheets = document.Sheets
+
+    ' Set up a propval object to store the filter properties
+    Dim Propval(1) as New com.sun.star.beans.PropertyValue
+    Propval(0).Name = "FilterName"
+    Propval(0).Value = "Text - txt - csv (StarCalc)"
+    Propval(1).Name = "FilterOptions"
+    Propval(1).Value ="59,34,0,1,1"   'ASCII  59 = ;  34 = "
+
+    ' For each sheet, assemble a filename and save using the filter
+    document.getCurrentController.setActiveSheet(Sheets(0))
+    Filename = FileDirectory + "/" + "Parameters" + ".csv"
+    FileURL = convertToURL(Filename)
+    document.StoreToURL(FileURL, Propval())
+
+	REM remove the leading "file://" characters
+	lengthPath = Len(FileDirectory)
+	pathToScript = Right(FileDirectory,lengthPath-7)
+	
+	REM [https://ask.libreoffice.org/en/question/222445/how-to-properly-execute-a-python-script-from-within-a-calc-macro-shell/]
+	ExeLinuxCommandSync("python3 "+pathToScript+"/create_prm_from_csv.py")
+
+End Sub
+
+
+Function ExeLinuxCommandSync(command as string) 
+
+    'build shell command
+    shellCommand = "-c '" & command & "'"
+
+    'run command
+    shellResponse = Shell ("bash", 0, shellCommand, true)
+
+End Function

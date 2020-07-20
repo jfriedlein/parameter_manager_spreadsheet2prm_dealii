@@ -1,6 +1,6 @@
 ;Qplate;
 #export column marked by “x”;x;
-# Legend: Qplate-;aniso;
+# Legend: Qplate-;aniso;aniso_strongly
 ##start;;
 #subsection General;;
 Number of adaptive refinements;0;
