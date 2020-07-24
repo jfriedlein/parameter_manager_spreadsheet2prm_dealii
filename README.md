@@ -21,3 +21,5 @@ The file `parameter_manager.xlsx` contains an example of a parameter set.
 * ...
 
 @todo upload the macro somehow (or link it inside the spreadsheet)
+
+@todo maybe also add a sheet for the load history (data points + graph)
