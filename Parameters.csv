@@ -1,91 +1,92 @@
-;Qplate;
-#export column marked by “x”;x;
-# Legend: Qplate-;aniso;aniso_strongly
-##start;;
-#subsection General;;
-Number of adaptive refinements;0;
-Max refinement level;100;
-Number global refinements;2;
-Apply global refinements stepwise;FALSE;
-AMR afresh on new meshes;FALSE;
-Input for the KellyErrorEstimator;0;
-Number of hole edge refinements;2;
-Poly degree;1;
-Reduced integration;FALSE;
-Number load steps;100;
-Tolerance residual;1.00E-08;
-Max nbr of NR its;10;
-Solution method;1;
-Hybrid solution method;FALSE;
-Use damped NR;FALSE;
-Initial increment;0.004;
-Lumped mass integration;FALSE;
-Projection Method;2;
-Pressure value;1;
-Numerical Example;1;
-Using a param_study;FALSE;
-GG-Mode;FALSE;
-Max load increment;0.007;
-Min load increment;1.00E-06;
-#end;;
-;;
-#subsection MaterialModel;;
-Material Model;2;
-Use finite strains;FALSE;
-2D type;0;
-Youngs modulus E;2.07E+05;
-Poisson ratio nu;0.29;
-// plasticity parameters;;
-Plastic hardening type;0;
-Yield stress;40;
-Hardening modulus K;1.00E+03;
-Hardening modulus of exp;16.93;
-beta_inf;265;
-Plastic Hill anisotropy;TRUE;
-Hill coefficient h11;1.25;2.25
-Hill coefficient h22;0.75;0.5
-Hill coefficient h33;1;1
-Hill coefficient h12;0.4;0.25
-Hill coefficient h23;0.4;0.25
-Hill coefficient h31;0.4;0.25
-sheet orientation theta;0;
-// damage parameters;;
-Damage function;1;
-Exp. rate param. eta_1;2;
-Exp. rate param. eta_2;0.4;
-Exp. rate param. eta_3;10;
-Exp. rate param. eta_4;0.6;
-q_min;0.05;
-c_d;3;
-beta_d;10;
-Activate TGD ;FALSE;
-#end;;
-;;
-#subsection Geometry;;
-Width of the geometry;200;
-Hole radius;50;
-Thickness of the model in 3D;20;
-Ratio of inner_Mesh to outer_Mesh;0.15;
-Height of the model;1;
-Notch width;8.98;
-Nbr of elements in z;3;
-Nbr of y repetitions;8;
-#end;;
-;;
-#subsection Modeling;;
-Coupling Traction for Right Edge s_xx;1;
-Coupling Traction for Right Edge t_xy;1;
-Coupling Traction for Top Edge s_yy;1;
-Coupling Traction for Top Edge t_xy;1;
-Use custom load history;TRUE;
-Use as reference solution;FALSE;
-Compute error;FALSE;
-Use X-proj. as plastic e.;2;
-Activate the equilibrium iterations;FALSE;
-Log the equilibrium iterations;FALSE;
-Survey Mode;0;
-Write data at QP level;FALSE;
-Static Mesh;TRUE;
-Load/displacement control;2;
-#end;;
-##end;;
+;Qplate;;;;;
+#export column marked by “x”;;;x;;;
+# Legend: _;Qplate-2D-aniso;Qplate-2D-aniso_strongly;Qplate-2D-AS;OET;OET-NeoHooke;tensileSpecimen
+##start;;;;;;
+#subsection General;;;;;;
+Number of adaptive refinements;0;;0;0;0;0
+Max refinement level;100;;100;100;100;100
+Number global refinements;2;;3;0;1;1
+Apply global refinements stepwise;0;;FALSE;FALSE;FALSE;FALSE
+AMR afresh on new meshes;0;;FALSE;FALSE;FALSE;FALSE
+Input for the KellyErrorEstimator;0;;0;1;1;0
+Number of hole edge refinements;2;;0;0;0;0
+Poly degree;1;;1;1;1;1
+Reduced integration;0;;FALSE;FALSE;FALSE;FALSE
+Number load steps;100;;100;100;100;100
+Tolerance residual;1.00E-08;;1.00E-08;1.00E-06;1.00E-06;1.00E-08
+Max nbr of NR its;10;;10;10;10;20
+Solution method;1;;1;1;1;1
+Hybrid solution method;0;;FALSE;FALSE;FALSE;FALSE
+Use damped NR;0;;FALSE;FALSE;FALSE;FALSE
+Initial increment;0.004;;0.004;0.0001;0.001;0.01
+Lumped mass integration;0;;FALSE;FALSE;FALSE;FALSE
+Projection Method;2;;2;2;2;2
+Pressure value;1;;1;2;2;2
+Numerical Example;1;;1;2;2;6
+Using a param_study;0;;FALSE;FALSE;FALSE;FALSE
+GG-Mode;0;;FALSE;TRUE;FALSE;TRUE
+Max load increment;0.007;;1;2.50E-04;0.0003;0.2
+Min load increment;1.00E-06;;5.00E-04;1.00E-06;1.00E-06;1.00E-06
+#end;;;;;;
+;;;;;;
+#subsection MaterialModel;;;;;;
+Material Model;2;;4;4;5;2
+Use finite strains;0;;FALSE;FALSE;TRUE;FALSE
+2D type;0;;0;0;0;0
+Youngs modulus E;2.07E+05;;2.07E+05;2.07E+05;2.07E+05;2.07E+05
+Poisson ratio nu;0.29;;0.29;0.29;0.3;0.29
+// plasticity parameters;;;;;;
+Plastic hardening type;0;;0;0;0;0
+Yield stress;40;;40;40;4.00E+01;450
+Hardening modulus K;1.00E+03;;1.00E+03;2.00E+03;2.00E+03;1.00E+03
+Hardening modulus of exp;16.93;;16.93;;;16.93
+beta_inf;265;;265;10;10;265
+Plastic Hill anisotropy;1;;FALSE;FALSE;FALSE;FALSE
+Hill coefficient h11;1.25;2.25;1.25;;;1.25
+Hill coefficient h22;0.75;0.5;0.75;;;0.75
+Hill coefficient h33;1;1;1;;;1
+Hill coefficient h12;0.4;0.25;0.4;;;0.4
+Hill coefficient h23;0.4;0.25;0.4;;;0.4
+Hill coefficient h31;0.4;0.25;0.4;;;0.4
+sheet orientation theta;0;;0;;;0
+// damage parameters;;;;;;
+Damage function;1;;1;1;1;1
+Exp. rate param. eta_1;2;;1;1.5;2;1
+Exp. rate param. eta_2;0.4;;1;1.5;0.4;1
+Exp. rate param. eta_3;10;;1.00E+06;1.00E+01;1.00E+01;1.00E+06
+Exp. rate param. eta_4;0.6;;0.4;0.8;0.8;0.4
+q_min;0.05;;0.008;0.015;0.15;0.008
+c_d;3;;3;3;3;3
+beta_d;10;;10;10;10;10
+Activate TGD ;0;;FALSE;FALSE;FALSE;FALSE
+#end;;;;;;
+;;;;;;
+#subsection Geometry;;;;;;
+Width of the geometry;100;;100;1;1;50
+Hole radius;50;;50;;;20
+Thickness of the model in 3D;20;;20;;;1.5
+Ratio of inner_Mesh to outer_Mesh;0.15;;0.15;;;
+Height of the model;1;;1;;;25
+Notch width;8.98;;8.98;;;10
+Nbr of elements in z;3;;3;;;2
+Nbr of y repetitions;8;;8;;;
+#end;;;;;;
+;;;;;;
+#subsection Modeling;;;;;;
+Coupling Traction for Right Edge s_xx;1;;1;;;1
+Coupling Traction for Right Edge t_xy;1;;1;;;1
+Coupling Traction for Top Edge s_yy;1;;1;;;1
+Coupling Traction for Top Edge t_xy;1;;1;;;1
+Reference length;;;;;;20
+Use custom load history;1;;TRUE;TRUE;TRUE;TRUE
+Use as reference solution;0;;FALSE;FALSE;FALSE;FALSE
+Compute error;0;;FALSE;FALSE;FALSE;FALSE
+Use X-proj. as plastic e.;2;;2;2;2;2
+Activate the equilibrium iterations;0;;FALSE;FALSE;FALSE;FALSE
+Log the equilibrium iterations;0;;FALSE;FALSE;FALSE;FALSE
+Survey Mode;0;;0;0;0;0
+Write data at QP level;1;;TRUE;TRUE;TRUE;TRUE
+Static Mesh;1;;TRUE;TRUE;TRUE;TRUE
+Load/displacement control;2;;2;2;2;2
+#end;;;;;;
+##end;;;;;;
